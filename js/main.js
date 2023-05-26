@@ -4,7 +4,7 @@ const platos = [
     
     {
         id:1,
-        nombre:"La_Fortaleza",
+        nombre:"La fortaleza",
         precio: 2000,
         descripcion:"",
         categoria: "plato principal"
@@ -21,11 +21,11 @@ const platos = [
         nombre:"Rubi",
         precio:2500,
         descripcion:"",
-        categoria:"platoPrincipal",
+        categoria:"platorPrincipal",
         },
     {
         id:4,
-        nombre:"Hamburgueza",
+        nombre:"Hamburguesa",
         precio:2500,
         descripcion:"",
         categoria:"entrada",
@@ -39,14 +39,14 @@ const platos = [
         },
     {
         id:6,
-        nombre:"Ensalada_de_Palta_Y_Queso_Tomate_Y_Cebolla",
+        nombre:"Ensalada de palta queso tomate y cebolla",
         precio:1800,
         descripcion:"",
         categoria:"PlatoPrincioal",
         },
     {
         id:7,
-        nombre:"Pastel_De_Brocoli_Con_Queso",
+        nombre:"Pastel de brocoli con queso",
         precio:1700,
         descripcion:"",
         categoria:"entrada",
@@ -60,7 +60,7 @@ const platos = [
         },
     {
         id:9,
-        nombre:"Salmon_Con_Arroz_Zebolla_Y_Pepino",
+        nombre:"Salmon con arroz cebolla y pepino",
         precio:1700,
         descripcion:"",
         categoria:"platoPrincipal",
@@ -76,14 +76,18 @@ const platos = [
     
     const carrito = [];
 
+    const seleccionarPlatos = ("si");
+
+    alert(prompt("Ingrese si, si decea elegir algun plato, si no seleccione no"));
+
     function mostrarProductos () {
     const listado = platos.reduce((acc, el) => acc +=`${el.id} - ${el.nombre} - precio: $${el.precio} \n`,"");
 
-const seleccionarPlatos = parseiInt(prompt("ingrese el numero de plato que decea, ingrese no para salir\n" + listado)).toLowerCase();
+    seleccionarPlatos = parseiInt(prompt("ingrese el numero de plato que decea, ingrese no para salir\n" + listado)).toLowerCase();
 
 let precio = 0;
 
-productoElegido = platos.find(p => p.id === seleccionarPlatos);
+let productoElegido = platos.find(p => p.id === seleccionarPlatos);
 
 console.log("productoElegido"),
 
@@ -92,23 +96,27 @@ console.log(carrito);
 
 const continuarCompra = confirm("decea continuar?")
 
-if(continuarCompra){
-    mostrarProductos();
+if(continuarCompra === "si"){
+
+    mostrarProductos(productoElegido)
+
 }else{
-    alert("el total de su comopra es ");
+
+    alert("el total de su compra es ", precio);
+
     }
 }
-
-while (seleccionarPlatos !== " "){
+while (seleccionarPlatos !==" ") {
 
     alert("Debes ingresar una opcion");
 
-const plato = (prompt("Ingrese el plato deseado: la fortaleza, especial, rubi, hamburguesa, jugo de zanahoria, ensalada de palta queso tomate y cebolla pastel de brocoli con queso pollo salteado con brocoli y soja, salmon con arroz cebolla y pepino, frutas")).toLowerCase();
+let plato = (prompt("Ingrese el plato deseado: la fortaleza, especial, rubi, hamburguesa, jugo de zanahoria, ensalada de palta queso tomate y cebolla pastel de brocoli con queso pollo salteado con brocoli y soja, salmon con arroz cebolla y pepino, frutas")).toLowerCase();
 
-if (plato1 == "la fortaleza"|| plato2=="especial"|| plato3 == "rubi"|| plato4 == "hamburguesa"|| plato5 == "jugo de zanahoria"|| plato6 == "ensalada de palta y queso tomate y cebolla"|| plato7 == "pastel de brocoli con queso" || plato8 == "pollo salteado con brocoli y soja" || plato9 == "Salmon con arroz cebolla y pepino" || plato10 == "frutas"){
+
+if ("la fortaleza"|| "especial"|| "rubi"|| "hamburguesa"|| "jugo de zanahoria"|| "ensalada de palta y queso tomate y cebolla"|| "pastel de brocoli con queso" || "pollo salteado con brocoli y soja" || "Salmon con arroz cebolla y pepino" || "frutas"){
     
     switch (plato){
-    case "laFortaleza":
+    case "la fortaleza":
     precio = 1500; 
     plato = "la fortaleza";
     break;
@@ -151,82 +159,68 @@ if (plato1 == "la fortaleza"|| plato2=="especial"|| plato3 == "rubi"|| plato4 ==
     default:
     alert ("El plato no esta disponible");
     }    
-alert("Seleccionaste el plato," + "" + plato + "del menu");
+
+alert("Seleccionaste el plato," + " " + plato + " del menu");
 
 let cantidad = parseInt(prompt("cuantos platos del menu quiere llevar?"));
+
     cantidad = Number(cantidad);
 
-    alert ("seleccionaste la cantidad " + cantidad + "de platos");
+    alert ("seleccionaste la cantidad " + cantidad + " de platos");
 
-} else { (seleccionarPlatos != "si");
+}else{ (seleccionarPlatos !== "si");
 
     alert("Gracias regrese cuando quiera. lo esperamos!!!");
     }
-    seleccionarPlatos = prompt("Deceas elegir un plato mas? Ingrese si para seleccionar algun plato? no para salir").toLowerCase();
+    seleccionarPlatos === (prompt("Deceas elegir un plato mas?Ingrese si para seleccionar algun plato? no para salir")).toLowerCase();
 }
-
 if (seleccionarPlatos === "si"){
     
     alert("Elige los que quieras");
     
-    platos = prompt("Ingrese el nombre de un plato del menu, la fortaleza,especial,rubi,hamburguesa,jugo de zanahoria,ensalada de palta y queso tomate y cebolla,pastel de brocoli con queso,pollo salteado con brocoli y soja,salmon con arroz cebolla y pepino,frutas");
+    plato = prompt("Ingrese el nombre de un plato del menu", plato1-"la_fortaleza",plato2-"especial",plato3-"rubi",plato4-"hamburguesa",plato5-"jugo de zanahoria",plato6-"ensalada de palta y queso tomate y cebolla",plato7-"pastel de brocoli con queso",plato8-"pollo salteado con brocoli y soja",plato9-"salmon con arroz cebolla y pepino",plato10-frutas );  
 
     cantidad = parseInt(prompt("cuantos platos del menu quiere llevar?"));
     cantidad = Number(cantidad);
 
 alert ("seleccionaste la cantidad " + cantidad + "de platos");
 
-}else { (seleccionarPlatos !== "si");
-alert("Gracias regrese cuando quiera lo esperamos");
-    }
+} else (seleccionarPlatos !==" ");{
 
-    function Menu(nombre, precio){
+alert("Gracias regrese cuando quiera lo esperamos");
+
+    } 
+    function PlatoSelec(nombre, precio){
         this.nombre = nombre;
         this.precio = precio;
         this.ingredientes = ingredientes;
         this.stock= this.stock;
-    }
-        const plato1 ={
-            nombre:"La_Fortaleza",
-            precio: 2000,
-            };
-        const plato2 ={
-                nombre:"Especial",
-                precio: 2300,
-            };
-        const plato3 ={
-                nombre:"Rubi",
-                precio:2500,
-            };
-        const plato4 ={
-                nombre:"Hamburgueza",
-                precio:2500,
-            }
-        const plato5 ={
-                nombre:"Jugo de Zanahoria",
-                precio:1200,
-            }
-        const plato6 ={
-                nombre:"Ensalada_de_Palta_Y_Queso_Tomate_Y_Cebolla",
-                precio:1800,
-            }
-        const plato7 ={
-                nombre:"Pastel_De_Brocoli_Con_Queso",
-                precio:1700,
-            }
-        const plato8 ={
-                nombre:"Pollo salteado con brocoli y soja",
-                precio:1600,
-            }
-        const plato9 ={
-                nombre:"Salmon_Con_Arroz_Zebolla_Y_Pepino",
-                precio:1700,
-            }
-        const plato10 ={
-                nombre:"Frutas",
-                precio:1800,
-            };
+    
+        const plato1 = new plato ("La fortaleza",nombrePlato,
+            2000 );
+        const plato2 = new plato("Especial", nombrePlato,
+            2300);
+        const plato3 = new plato("Rubi", nombrePlato, 
+        2500);
+        const plato4 = new plato("Hamburguesa", nombrePlato,
+        2500);
+        const plato5 = new plato("Jugo de Zanahoria", nombrePlato,
+        1200);
+        const plato7 =new plato("Pastel de brocoli con queso",nombrePlato,
+        1700);
+        const plato8 =new plato("Pollo salteado con brocoli y soja",nombrePlato,
+        1600);
+        const plato9 = new plato("Salmon con arroz cebolla y pepino",nombrePlato, 
+        1700);
+        const plato10 = new plato("Frutas",nombrePlato,
+        1800);
 
+        this.vender =(cant) => {
+        this.stock = this.stock -cant;
+        };
+        this.mostrar = () => "Producto:" + this.nombre +
+        "precio:" + this.precio;
+    }
 function sumar(la_fortaleza){
     let plato = "la fortaleza";
     return plato;
