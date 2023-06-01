@@ -1,7 +1,6 @@
 alert ("Bienvenido al restaurant La Fortaleza");
 
 const platos = [
-    
     {
         id:1,
         nombre:"La fortaleza",
@@ -73,32 +72,36 @@ const platos = [
         categoria:"postre",
         },
     ]
-    
-    const carrito = [];
+const carrito = [];
 
-    const seleccionarPlatos = ("si");
+let seleccion = "si"
 
-    alert(prompt("Ingrese si, si decea elegir algun plato, si no seleccione no"));
+function mostrarProductos () {
+const listado = platos.reduce((acc, el) => acc +=`${el.id} - ${el.nombre} - precio: $${el.precio} \n`,"");
 
-    function mostrarProductos () {
-    const listado = platos.reduce((acc, el) => acc +=`${el.id} - ${el.nombre} - precio: $${el.precio} \n`,"");
-
-    seleccionarPlatos = parseiInt(prompt("ingrese el numero de plato que decea, ingrese no para salir\n" + listado)).toLowerCase();
+    seleccion = parseiInt(prompt("ingrese el numero de plato que decea, ingrese no para salir\n" + listado)).toLowerCase();
 
 let precio = 0;
 
-let productoElegido = platos.find(p => p.id === seleccionarPlatos);
+menu = platos
 
-console.log("productoElegido"),
+function buscarPlato(){
+const id = prompt("Ingrese el numero de id del plato que decea elegir").toLowerCase();
 
-carrito.push(productoElegido);
-console.log(carrito);
+let platoElegido = platos.find(platos => platos.id === id);
+
+    console.log("platoElegido"),
+    buscarPlato();
+}
+    carrito.push(platoElegido);
+
+    console.log(carrito);
 
 const continuarCompra = confirm("decea continuar?")
 
 if(continuarCompra === "si"){
 
-    mostrarProductos(productoElegido)
+    mostrarPlatos(platoElegido)
 
 }else{
 
@@ -106,15 +109,14 @@ if(continuarCompra === "si"){
 
     }
 }
-while (seleccionarPlatos !==" ") {
 
-    alert("Debes ingresar una opcion");
+while (seleccion !== ""){
+    alert ("Debes ingresar unas opcion");
 
-let plato = (prompt("Ingrese el plato deseado: la fortaleza, especial, rubi, hamburguesa, jugo de zanahoria, ensalada de palta queso tomate y cebolla pastel de brocoli con queso pollo salteado con brocoli y soja, salmon con arroz cebolla y pepino, frutas")).toLowerCase();
-
+    let plato = (prompt("Ingrese el plato deseado: la fortaleza, especial, rubi, hamburguesa, jugo de zanahoria, ensalada de palta queso tomate y cebolla pastel de brocoli con queso pollo salteado con brocoli y soja, salmon con arroz cebolla y pepino, frutas")).toLowerCase();
 
 if ("la fortaleza"|| "especial"|| "rubi"|| "hamburguesa"|| "jugo de zanahoria"|| "ensalada de palta y queso tomate y cebolla"|| "pastel de brocoli con queso" || "pollo salteado con brocoli y soja" || "Salmon con arroz cebolla y pepino" || "frutas"){
-    
+        
     switch (plato){
     case "la fortaleza":
     precio = 1500; 
@@ -160,36 +162,51 @@ if ("la fortaleza"|| "especial"|| "rubi"|| "hamburguesa"|| "jugo de zanahoria"||
     alert ("El plato no esta disponible");
     }    
 
-alert("Seleccionaste el plato," + " " + plato + " del menu");
-
-let cantidad = parseInt(prompt("cuantos platos del menu quiere llevar?"));
-
-    cantidad = Number(cantidad);
-
-    alert ("seleccionaste la cantidad " + cantidad + " de platos");
-
-}else{ (seleccionarPlatos !== "si");
-
-    alert("Gracias regrese cuando quiera. lo esperamos!!!");
-    }
-    seleccionarPlatos === (prompt("Deceas elegir un plato mas?Ingrese si para seleccionar algun plato? no para salir")).toLowerCase();
+let unidades = parseInt(prompt("cuantos platos quiere llevar"))
+    carrito.push({menu, unidades, precio})
+    console.log(carrito)
+} else{
+    alert("no tenemos ese plato disponible")
 }
-if (seleccionarPlatos === "si"){
-    
-    alert("Elige los que quieras");
-    
-    plato = prompt("Ingrese el nombre de un plato del menu", plato1-"la_fortaleza",plato2-"especial",plato3-"rubi",plato4-"hamburguesa",plato5-"jugo de zanahoria",plato6-"ensalada de palta y queso tomate y cebolla",plato7-"pastel de brocoli con queso",plato8-"pollo salteado con brocoli y soja",plato9-"salmon con arroz cebolla y pepino",plato10-frutas );  
+    seleccion = prompt("decea seguir eligiendo?")
 
-    cantidad = parseInt(prompt("cuantos platos del menu quiere llevar?"));
-    cantidad = Number(cantidad);
+while(seleccion === "no"){
+    alert("gracias por la compra, hasta pronto")
+    carrito.forEach((carritoFinal) => {
+      console.log('plato: ${carritoFinal.plato}, + unidades: ${carritoFinal.unidades}, + total a pagar por plato ${carritoFinal.unidades * carritoFinal.precio}')
+    })
+break;  
+}
+}
+const total = carrito.reduce((acc,el)=> acc, + el.precio * el.unidades, 0) 
+    console.log('el total a pagar por su compra es: ${total}')
 
-alert ("seleccionaste la cantidad " + cantidad + "de platos");
+const filtroPorPrecio = ArrayAlimento.filter(alimento=>
+    alimento.precio < 2000)
 
-} else (seleccionarPlatos !==" ");{
+const filtrarPorNombre1 = new Array ["]laFortaleza","Especial","1900", "Rubi", "Hamburgueza","jugoDeZanahoria", "Ensalada palta queso tomate y cebolla", "1800",
+"pastelDeBrocoliConQueso", "1500", "PolloSalteadoConBrocoliYSoja", "1800","SalmonConArrozCebollaYPepino", "2000", "Frutas" ,"1200"]
 
-alert("Gracias regrese cuando quiera lo esperamos");
+    localStorage.setItem('menu1', 'laFortaleza')
 
-    } 
+    localStorage.setItem('menu2', 'especial')
+
+    localStorage.setItem('menu3', 'rubi')
+
+    localStorage.setItem('menu4', 'hamburguesas')
+
+    localStorage.setItem('menu5', 'jugoDZanahoria')
+
+    localStorage.setItem('menu6', 'EnsaladaDePaltaQuesoTomateceYCebolla')
+
+    localStorage.setItem('menu7', 'polloSalteadoConBrocoliYSoja')
+
+    localStorage.setItem('menu8', 'pollo_salteado_con_brocoli_y_soja')
+
+    localStorage.setItem('menu9', 'salmonConArrozCebollaYPepino')
+
+    localStorage.setItem('menu10', 'frutas')
+
     function PlatoSelec(nombre, precio){
         this.nombre = nombre;
         this.precio = precio;
@@ -214,7 +231,6 @@ alert("Gracias regrese cuando quiera lo esperamos");
         1700);
         const plato10 = new plato("Frutas",nombrePlato,
         1800);
-
         this.vender =(cant) => {
         this.stock = this.stock -cant;
         };
@@ -222,7 +238,8 @@ alert("Gracias regrese cuando quiera lo esperamos");
         "precio:" + this.precio;
     }
 function sumar(la_fortaleza){
-    let plato = "la fortaleza";
-    return plato;
+    let plato1 = "la fortaleza";
+    return acc;
 }
-console.log(sumar(la_fortaleza));
+    console.log(sumar(la_fortaleza))
+    
