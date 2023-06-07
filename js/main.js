@@ -80,14 +80,14 @@ function mostrarPlatos () {
 
 const listado = platos.reduce((acc, el)=>acc +=`${el.id}-${el.nombre}-precio:$${el.precio}\n`,"0");
 
-const seleccion = parseInt(prompt("ingrese el numero de plato que decea, ingrese 'no' para salir\n" + listado));
+const seleccion = parseInt(prompt("Ingrese el numero de plato que decea, ingrese 'no' para salir\n" + listado));
 
-if (seleccion  === 0 || NaN(seleccion)) {
+if (seleccion  === 0 || isNaN(seleccion)) {
     calcularTotal();
     return;
 }
 
-const buscarPlato = platos.find(platos => platos.id === seleccion);
+const buscarPlato = platos.find(plato => plato.id === seleccion);
 
     console.log(buscarPlato);
 
@@ -109,7 +109,7 @@ function calcularTotal(){
 
 const total = carrito.reduce((acc,el)=> acc + el.precio, 0);
 
-    alert(`el total a pagar por su compra es: $${total}`);
+    alert(`El total a pagar por su compra es: $${total}`);
 }
 const filtroPorPrecio = platos.filter(alimento =>alimento.precio < 2000);
 const filtroPorCategoria = platos.filter(alimento =>alimento.categoria ==='plato principal');
@@ -140,4 +140,6 @@ const filtrarPorNombre1 = new Array
     localStorage.setItem('menu9', 'salmonConArrozCebollaYPepino')
 
     localStorage.setItem('menu10', 'frutas')
+
+    mostrarPlatos()
 
