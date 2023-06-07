@@ -1,6 +1,7 @@
 alert ("Bienvenido al restaurant La Fortaleza");
 
 // cristian nuñez
+
 const platos = [
     {
         id:1,
@@ -75,118 +76,43 @@ const platos = [
     ]
 const carrito = [];
 
-let seleccion = "si"
-
 function mostrarProductos () {
+
 const listado = platos.reduce((acc, el) => acc +=`${el.id} - ${el.nombre} - precio: $${el.precio} \n`,"");
 
-seleccion = prompt("ingrese el numero de plato que decea, ingrese no para salir\n" + listado).toLowerCase();
+const seleccion = parseInt(prompt("ingrese el numero de plato que decea, ingrese no para salir" + listado));
 
-let precio = 0;
-menu = platos
+const buscarPlato = platos.find(platos => platos.id === seleccion);
 
-function buscarPlato(){
-const id = prompt("Ingrese el numero de id del plato que decea seleccionar").toLowerCase();
+    console.log("buscarPlato");
 
-let buscarPlato = platos.find(platos => platos.id === id);
-
-    console.log("buscarPlato"),
-    buscarPlato();
-}
     carrito.push(buscarPlato);
 
     console.log(carrito);
 
-const continuarCompra = confirm("decea continuar eligiendo?")
+const continuarCompra = confirm("decea continuar eligiendo?");
 
-if(continuarCompra === "si"){
+if(continuarCompra){
 
-    mostrarPlatos(buscarPlato)
+    mostrarPlatos();
 
 }else{
-    alert(parseInt("el total de su compra es ", precio));
+    calcularTotal();
     }
+
 }
-while (seleccion === "si"){
+function calcularTotal(){
 
-    alert (prompt("Decea seleccionar algun plato"));
-    alert ("Aqui te mostramos los platos que tenemos disponibles para vos");
-
-console.log(mostrarProductos ()); 
-
-    let plato = (prompt("Ingrese el plato deseado: la fortaleza, especial, rubi, hamburguesa, jugo de zanahoria, ensalada de palta queso tomate y cebolla, pastel de brocoli con queso pollo salteado con brocoli y soja, salmon con arroz cebolla y pepino, frutas")).toLowerCase();
-
-if (menu =="la fortaleza"|| menu =="especial"|| menu =="rubi"|| menu =="hamburguesa"|| menu =="jugo de zanahoria"|| menu =="ensalada de palta y queso tomate y cebolla"|| menu =="pastel de brocoli con queso" || menu =="pollo salteado con brocoli y soja" || menu =="Salmon con arroz cebolla y pepino" || menu =="frutas"){
-        
-    switch (plato){
-    case "la fortaleza":
-    precio = 1500; 
-    plato = "la fortaleza";
-    break;
-    case "especial":
-    precio = 1900;
-    plato  = "especial";
-    break;
-    case "rubi":
-    precio = 1600;
-    plato  = "rubi";
-    break;
-    case "hamburguesa": 
-    precio = 1200;
-    plato = "hamburguesa";
-    break;
-    case "jugo de Zanahoria": 
-    precio  = 600;
-    plato  = "jugo de zanahoria";
-    break; 
-    case "ensalada de palta queso tomate y cebolla":
-    precio = 1500;
-    plato = "ensalada de palta queso tomate y cebolla";
-    break;
-    case "pastel de brocoli con queso": 
-    precio = 1400;
-    plato = "pastel de brocoli con queso"
-    break;
-    case "pollo salteado con brocoli y soja": 
-    precio = 1200;
-    plato = "pollo salteado con brocoli y soja";
-    break;
-    case "salmon con arroz cebolla y pepino": 
-    precio = 800;   
-    plato = "salmon con arroz cebolla y pepino";
-    break; 
-    case "frutas":
-    precio = 800;
-    plato = "frutas"
-    break;
-    default:
-    alert ("El plato no esta disponible");
-    }  
-
-let unidades = parseInt(prompt("cuantos platos quiere llevar"))
-    carrito.push({platos, unidades, precio})
-    console.log(carrito)
-} else {
-    alert("no tenemos ese plato disponible")
+const total = carrito.reduce((acc,el)=> acc += el.precio * el.unidades, 0);
+    alert(`el total a pagar por su compra es: ${total}`);
 }
-    seleccion = (prompt("decea seguir eligiendo?"))
+const filtroPorPrecio = platos.filter(alimento=>
+    alimento.precio < 2000);
 
-while(seleccion === "no"){
-    alert("gracias por la compra, hasta pronto")
-    carrito.forEach((carritoFinal) => {
-      console.log('plato: ${carritoFinal.plato}, + unidades: ${carritoFinal.unidades}, + total a pagar por plato ${carritoFinal.unidades * carritoFinal.precio}')
-    })
-break;  
-}
-}
-const total = carrito.reduce((acc,el)=> acc, + el.precio * el.unidades, 0) 
-    console.log('el total a pagar por su compra es: ${total}')
-
-const filtroPorPrecio = ArrayAlimento.filter(alimento=>
-    alimento.precio < 2000)
+    console.log(filtroPorPrecio);
 
 const filtrarPorNombre1 = new Array ["]laFortaleza","Especial","1900", "Rubi", "Hamburgueza","jugoDeZanahoria", "Ensalada palta queso tomate y cebolla", "1800",
-"pastelDeBrocoliConQueso", "1500", "PolloSalteadoConBrocoliYSoja", "1800","SalmonConArrozCebollaYPepino", "2000", "Frutas" ,"1200"]
+"pastelDeBrocoliConQueso", "1500", "PolloSalteadoConBrocoliYSoja", "1800","SalmonConArrozCebollaYPepino", "2000", "Frutas" ,"1200"]();
 
     localStorage.setItem('menu1', 'laFortaleza')
 
@@ -243,4 +169,3 @@ function sumar(la_fortaleza){
     return acc;
 }
     console.log(sumar(la_fortaleza))
-    
