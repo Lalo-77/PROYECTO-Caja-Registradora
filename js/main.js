@@ -78,13 +78,18 @@ const carrito = []
 
 function mostrarPlatos () {
 
-const listado = platos.reduce((acc, el)=>acc +=`${el.id} - ${el.nombre} - precio: $${el.precio} \n`,"0");
+const listado = platos.reduce((acc, el)=>acc +=`${el.id}-${el.nombre}-precio:$${el.precio}\n`,"0");
 
-const seleccion = parseInt(prompt("ingrese el numero de plato que decea, ingrese no para salir" + listado));
+const seleccion = parseInt(prompt("ingrese el numero de plato que decea, ingrese 'no' para salir\n" + listado));
+
+if (seleccion  === 0 || NaN(seleccion)) {
+    calcularTotal();
+    return;
+}
 
 const buscarPlato = platos.find(platos => platos.id === seleccion);
 
-    console.log("buscarPlatos");
+    console.log(buscarPlato);
 
     carrito.push(buscarPlato);
 
@@ -93,7 +98,6 @@ const buscarPlato = platos.find(platos => platos.id === seleccion);
 const continuarCompra = confirm("decea continuar eligiendo?");
 
 if(continuarCompra){
-
     mostrarPlatos();
 
 }else{
@@ -103,10 +107,9 @@ if(continuarCompra){
 }
 function calcularTotal(){
 
-    mostrarPlatos()
-const total = carrito.reduce((acc,el)=> acc += el.precio * el.unidades, 0);
+const total = carrito.reduce((acc,el)=> acc + el.precio, 0);
 
-    alert(`el total a pagar por su compra es: ${total}`);
+    alert(`el total a pagar por su compra es: $${total}`);
 }
 const filtroPorPrecio = platos.filter(alimento =>alimento.precio < 2000);
 const filtroPorCategoria = platos.filter(alimento =>alimento.categoria ==='plato principal');
@@ -118,7 +121,7 @@ const filtrarPorNombre1 = new Array
 "pastel de brocoli con queso","1500","Pollo salteado con brocoli y soja","1800","Salmon con arroz cebolla y pepino","2000","Frutas","1200"]);
 
 
-    localStorage.setItem('menu1', 'laFortaleza')
+    localStorage.setItem('menu1', 'la fortaleza')
 
     localStorage.setItem('menu2', 'especial')
 
@@ -126,7 +129,7 @@ const filtrarPorNombre1 = new Array
 
     localStorage.setItem('menu4', 'hamburguesas')
 
-    localStorage.setItem('menu5', 'jugoDZanahoria')
+    localStorage.setItem('menu5', 'jugo de zahoria')
 
     localStorage.setItem('menu6', 'EnsaladaDePaltaQuesoTomateceYCebolla')
 
