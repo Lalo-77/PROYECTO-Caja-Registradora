@@ -22,7 +22,7 @@ const platos = [
         nombre:"Rubi",
         precio:2500,
         descripcion:"",
-        categoria:"platorPrincipal",
+        categoria:"plato principal",
         },
     {
         id:4,
@@ -33,7 +33,7 @@ const platos = [
         },
     {
         id:5,
-        nombre:"Jugo de Zanahoria",
+        nombre:"Jugo de zanahoria",
         precio:1200,
         descripcion:"",
         categoria:"postre",
@@ -43,7 +43,7 @@ const platos = [
         nombre:"Ensalada de palta queso tomate y cebolla",
         precio:1800,
         descripcion:"",
-        categoria:"PlatoPrincioal",
+        categoria:"Plato princioal",
         },
     {
         id:7,
@@ -57,14 +57,14 @@ const platos = [
         nombre:"Pollo salteado con brocoli y soja",
         precio:1600,
         descripcion:"",
-        categoria:"platoPrincipal",
+        categoria:"plato principal",
         },
     {
         id:9,
         nombre:"Salmon con arroz cebolla y pepino",
         precio:1700,
         descripcion:"",
-        categoria:"platoPrincipal",
+        categoria:"plato principal",
         },
     {
         id:10,
@@ -74,17 +74,17 @@ const platos = [
         categoria:"postre",
         },
     ]
-const carrito = [];
+const carrito = []
 
-function mostrarProductos () {
+function mostrarPlatos () {
 
-const listado = platos.reduce((acc, el) => acc +=`${el.id} - ${el.nombre} - precio: $${el.precio} \n`,"");
+const listado = platos.reduce((acc, el)=>acc +=`${el.id} - ${el.nombre} - precio: $${el.precio} \n`,"0");
 
 const seleccion = parseInt(prompt("ingrese el numero de plato que decea, ingrese no para salir" + listado));
 
 const buscarPlato = platos.find(platos => platos.id === seleccion);
 
-    console.log("buscarPlato");
+    console.log("buscarPlatos");
 
     carrito.push(buscarPlato);
 
@@ -103,16 +103,20 @@ if(continuarCompra){
 }
 function calcularTotal(){
 
+    mostrarPlatos()
 const total = carrito.reduce((acc,el)=> acc += el.precio * el.unidades, 0);
+
     alert(`el total a pagar por su compra es: ${total}`);
 }
-const filtroPorPrecio = platos.filter(alimento=>
-    alimento.precio < 2000);
+const filtroPorPrecio = platos.filter(alimento =>alimento.precio < 2000);
+const filtroPorCategoria = platos.filter(alimento =>alimento.categoria ==='plato principal');
 
     console.log(filtroPorPrecio);
 
-const filtrarPorNombre1 = new Array ["]laFortaleza","Especial","1900", "Rubi", "Hamburgueza","jugoDeZanahoria", "Ensalada palta queso tomate y cebolla", "1800",
-"pastelDeBrocoliConQueso", "1500", "PolloSalteadoConBrocoliYSoja", "1800","SalmonConArrozCebollaYPepino", "2000", "Frutas" ,"1200"]();
+const filtrarPorNombre1 = new Array
+(["la Fortaleza","2000","Especial","1900","Rubi","2500","Hamburgueza","2500","jugo de zanahoria","1200","Ensalada palta queso tomate y cebolla","1800",
+"pastel de brocoli con queso","1500","Pollo salteado con brocoli y soja","1800","Salmon con arroz cebolla y pepino","2000","Frutas","1200"]);
+
 
     localStorage.setItem('menu1', 'laFortaleza')
 
@@ -134,38 +138,3 @@ const filtrarPorNombre1 = new Array ["]laFortaleza","Especial","1900", "Rubi", "
 
     localStorage.setItem('menu10', 'frutas')
 
-    function PlatoSelecionado(nombre, precio){
-        this.nombre = nombre;
-        this.precio = precio;
-        this.ingredientes = ingredientes;
-        this.stock= this.stock;
-    
-        const plato1 = new plato ("La fortaleza",nombrePlato,
-            2000 );
-        const plato2 = new plato("Especial", nombrePlato,
-            2300);
-        const plato3 = new plato("Rubi", nombrePlato, 
-        2500);
-        const plato4 = new plato("Hamburguesa", nombrePlato,
-        2500);
-        const plato5 = new plato("Jugo de Zanahoria", nombrePlato,
-        1200);
-        const plato7 =new plato("Pastel de brocoli con queso",nombrePlato,
-        1700);
-        const plato8 =new plato("Pollo salteado con brocoli y soja",nombrePlato,
-        1600);
-        const plato9 = new plato("Salmon con arroz cebolla y pepino",nombrePlato, 
-        1700);
-        const plato10 = new plato("Frutas",nombrePlato,
-        1800);
-        this.vender =(cant) => {
-        this.stock = this.stock -cant;
-        };
-        this.mostrar = () => "Producto:" + this.nombre +
-        "precio:" + this.precio;
-    }
-function sumar(la_fortaleza){
-    let plato1 = "la fortaleza";
-    return acc;
-}
-    console.log(sumar(la_fortaleza))
